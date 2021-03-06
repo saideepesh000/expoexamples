@@ -1,41 +1,56 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import { useState, useEffect } from 'react';
+import { Box, UnorderedList, ListItem, Input } from '@chakra-ui/react';
+
+import SearchInput from './components/SearchInput';
 
 function App() {
+  const [data, setData] = useState([]);
+  const [searchRepo, setSearchRepo] = useState('');
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      let res = await fetch(
+        'https://api.github.com/repos/expo/examples/contents?master',
+        {
+          headers: {
+            authorization: `token ${process.env.REACT_APP_GITHUB_API_KEY}`,
+          },
+        }
+      );
+      res = await res.json();
+      res.splice(0, 5);
+      res = res.filter(repo => repo.type !== 'file');
+      console.log(res);
+      setData(res);
+    };
+    fetchApi();
+  }, []);
+
+  let arrayOfSanitizedNameObjects = data.map(repo => {
+    repo.sanitizedName = repo.name;
+
+    if (/^with-/.test(repo.sanitizedName)) {
+      repo.sanitizedName = repo.sanitizedName.replace('with-', '');
+    }
+
+    return {
+      sanitizedName: repo.sanitizedName,
+    };
+  });
+
+  const filterNames = ({ sanitizedName }) => {
+    return sanitizedName.toLowerCase().indexOf(searchRepo.toLowerCase()) !== -1;
+  };
+
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
-    </ChakraProvider>
+    <Box>
+      <SearchInput onSearch={setSearchRepo} value={searchRepo} />
+      <UnorderedList>
+        {arrayOfSanitizedNameObjects.filter(filterNames).map(repo => (
+          <ListItem>{repo.sanitizedName}</ListItem>
+        ))}
+      </UnorderedList>
+    </Box>
   );
 }
 
