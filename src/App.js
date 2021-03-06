@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Box, UnorderedList, ListItem, Input } from '@chakra-ui/react';
 
 import SearchInput from './components/SearchInput';
+import Card from './components/Card';
+
+import './styles.css';
 
 function App() {
   const [data, setData] = useState([]);
@@ -13,7 +15,7 @@ function App() {
         'https://api.github.com/repos/expo/examples/contents?master',
         {
           headers: {
-            authorization: `token ${process.env.REACT_APP_GITHUB_API_KEY}`,
+            authorization: 'token',
           },
         }
       );
@@ -43,14 +45,14 @@ function App() {
   };
 
   return (
-    <Box>
+    <div className="container">
       <SearchInput onSearch={setSearchRepo} value={searchRepo} />
-      <UnorderedList>
-        {arrayOfSanitizedNameObjects.filter(filterNames).map(repo => (
-          <ListItem>{repo.sanitizedName}</ListItem>
+      <div className="cardsContainer">
+        {data.filter(filterNames).map(repo => (
+          <Card repo={repo} />
         ))}
-      </UnorderedList>
-    </Box>
+      </div>
+    </div>
   );
 }
 

@@ -1,0 +1,13 @@
+.container {
+	margin: 20px 80px;
+	height: 100vh;
+	text-align: center;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.cardsContainer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 30px;
+}

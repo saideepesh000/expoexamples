@@ -1,8 +1,14 @@
-import React from 'react';
+import './searchInput.styles.css';
 
 function SearchInput({ value, onSearch }) {
 	return (
-		<input type="text" onChange={e => onSearch(e.target.value)} value={value} />
+		<input
+			className="searchInput"
+			type="text"
+			placeholder="Search"
+			onChange={e => onSearch(e.target.value)}
+			value={value}
+		/>
 	);
 }
 
