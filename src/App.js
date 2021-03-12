@@ -12,12 +12,7 @@ function App() {
   useEffect(() => {
     const fetchApi = async () => {
       let res = await fetch(
-        'https://api.github.com/repos/expo/examples/contents?master',
-        {
-          headers: {
-            authorization: 'token',
-          },
-        }
+        'https://api.github.com/repos/expo/examples/contents?master'
       );
       res = await res.json();
       res.splice(0, 5);
