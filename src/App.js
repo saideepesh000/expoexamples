@@ -17,27 +17,31 @@ function App() {
       res = await res.json();
       res.splice(0, 5);
       res = res.filter(repo => repo.type !== 'file');
-      console.log(res);
       setData(res);
     };
     fetchApi();
   }, []);
 
-  let arrayOfSanitizedNameObjects = data.map(repo => {
+   data.map(repo => {
     repo.sanitizedName = repo.name;
 
     if (/^with-/.test(repo.sanitizedName)) {
       repo.sanitizedName = repo.sanitizedName.replace('with-', '');
     }
-
-    return {
-      sanitizedName: repo.sanitizedName,
-    };
   });
+
+  data?.sort((a, b) =>
+    a.sanitizedName > b.sanitizedName
+      ? 1
+      : b.sanitizedName > a.sanitizedName
+      ? -1
+      : 0
+  );
 
   const filterNames = ({ sanitizedName }) => {
     return sanitizedName.toLowerCase().indexOf(searchRepo.toLowerCase()) !== -1;
   };
+
 
   return (
     <div className="container">

@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactMarkdown from 'react-markdown';
 
+import renderers from '../renderers.js';
+
 import './modal.styles.css';
 
 const Modal = ({ isShowing, hide, repo }) =>
@@ -28,7 +30,7 @@ const Modal = ({ isShowing, hide, repo }) =>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <ReactMarkdown allowDangerousHtml>
+              <ReactMarkdown renderers={renderers} allowDangerousHtml>
                 {repo.content
                   ? repo.content
                   : '### No README.md for this, Ask Them Create One'}
