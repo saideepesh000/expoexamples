@@ -1,7 +1,10 @@
+// import {FaSearch} from 'react-icons/fa'; 
+
 import './searchInput.styles.css';
 
 function SearchInput({ value, onSearch }) {
 	return (
+		<>
 		<input
 			className="searchInput"
 			type="text"
@@ -9,6 +12,7 @@ function SearchInput({ value, onSearch }) {
 			onChange={e => onSearch(e.target.value)}
 			value={value}
 		/>
+		</>
 	);
 }
 

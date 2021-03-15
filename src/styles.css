@@ -6,7 +6,16 @@
 	position: relative;
 }
 
+.container > h1{
+	font-size: 34px;
+	font-weight: 600;
+}
+.container > h1 > span{
+	color: #4c37eb;
+}
+
 .cardsContainer {
+	margin: 20px 0;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 30px;

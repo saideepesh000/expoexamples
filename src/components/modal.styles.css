@@ -23,7 +23,7 @@
 
 .modal {
   line-height: 2.2rem;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   z-index: 100;
   background: white;
   position: relative;
@@ -55,7 +55,6 @@ img {
 
 .modal-close-button {
   font-size: 1.4rem;
-  font-weight: 700;
   line-height: 1;
   color: #000;
   opacity: 0.3;

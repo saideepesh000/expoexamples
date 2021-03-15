@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Fade from 'react-reveal/Fade';
 
 import SearchInput from './components/SearchInput';
 import Card from './components/Card';
@@ -45,11 +46,17 @@ function App() {
 
   return (
     <div className="container">
+      <h1><span>Expo</span> Examples</h1>
       <SearchInput onSearch={setSearchRepo} value={searchRepo} />
       <div className="cardsContainer">
         {data.filter(filterNames).map(repo => (
+                        <Fade bottom>
+
           <Card repo={repo} />
+          </Fade>
         ))}
+
+
       </div>
     </div>
   );

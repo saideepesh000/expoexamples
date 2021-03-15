@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactMarkdown from 'react-markdown';
+import {FaGithub} from 'react-icons/fa'; 
 
 import renderers from '../renderers.js';
 
@@ -30,6 +31,7 @@ const Modal = ({ isShowing, hide, repo }) =>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+              <FaGithub/>
               <ReactMarkdown renderers={renderers} allowDangerousHtml>
                 {repo.content
                   ? repo.content

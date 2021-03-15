@@ -1,7 +1,12 @@
 .searchInput {
-	font-family: 'Arial';
+	font-family: 'Montserrat', sans-serif;
 	margin: 20px 0px;
-	width: 1153px;
+	width: 1168px;
 	padding: 10px;
 	font-size: 16px;
+	border: 1px solid #4c37eb;
+}
+
+.searchInput:focus{
+  color: #4c37eb;
 }
