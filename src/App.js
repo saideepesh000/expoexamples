@@ -23,12 +23,13 @@ function App() {
     fetchApi();
   }, []);
 
-   data.map(repo => {
+  data.map(repo => {
     repo.sanitizedName = repo.name;
 
     if (/^with-/.test(repo.sanitizedName)) {
       repo.sanitizedName = repo.sanitizedName.replace('with-', '');
     }
+    return null;
   });
 
   data?.sort((a, b) =>

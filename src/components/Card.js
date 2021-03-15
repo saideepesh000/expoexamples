@@ -33,7 +33,7 @@ function Card({ repo }) {
 		};
 		fetchReadme();
 		console.log(repo);
-	}, []);
+	});
 
 	return (
 		<div onClick={toggle}>

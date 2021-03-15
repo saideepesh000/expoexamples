@@ -12,7 +12,7 @@ const renderers = {
 
   link: ({href, children}) => {
   	return(
-  		<a className="a" href={href} target="_blank">{children}</a>
+  		<a className="a" href={href} rel="noreferrer" target="_blank">{children}</a>
   		)
   },
   inlineCode: ({value}) => {
