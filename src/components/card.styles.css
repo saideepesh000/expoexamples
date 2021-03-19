@@ -1,11 +1,19 @@
 .card {
-	border: 1px solid #4c37eb;
+	box-shadow: 0 9px 37px rgba(13,38,76,.07);
+	padding: .5rem;
+	border-radius: .75rem;
 }
 
-.card p {
-	font-size: 20px;
+.card > p {
+	font-size: 1.25rem;
 }
 
 .card:hover {
 	cursor: pointer;
+	transform: scale(1.05,1.05)
+}
+
+
+@media screen and (max-width: 700px)  {
+	
 }
