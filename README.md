@@ -1,3 +1,3 @@
 ## Expo Examples
 
-Search Official Expo Examples(🚧🚧🚧 Under Construction)
+Search For Official [Expo](github.com/expo/examples/) Examples
